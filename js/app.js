@@ -1,14 +1,14 @@
 /* ---- Search Input Field ---- */
 const searchMobile = () => {
     // ---- get input values
-    const searchField = document.getElementById("search-field");
-    const searchText = searchField.value;
+    const searchField = document.getElementById("search-field")
+    const searchText = searchField.value
 
     // ---- clear previous search
-    searchField.value = "";
+    searchField.value = ""
 
     // ---- load API data
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data.data))
@@ -35,11 +35,21 @@ const displaySearchResult = mobiles => {
                     <h5 class="card-title">${mobile.phone_name}</h5>
                     <p class="card-text">${mobile.brand}</p>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button onclick="mobileDetailes" class="btn btn-primary" type="button">Details</button>
+                        <button onclick="mobileDetails('${mobile.slug}')" class="btn btn-primary" type="button">Details</button>
                     </div>
                 </div>
             </div>
         `
         searchResult.appendChild(createDiv)
     })
+}
+
+const mobileDetails = mobileSlug => {
+    const url = `https://openapi.programming-hero.com/api/phone/${mobileSlug}`
+    console.log(url);
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => console.log(data.data))
+
 }
