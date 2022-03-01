@@ -9,9 +9,11 @@ const searchMobile = () => {
     searchField.value = ""
 
     // ---- error messages
-    if (searchText === "") {
+    if (searchText === "" || searchText == false) {
         const emptySearch = document.getElementById("empty-search")
         emptySearch.classList = "alert alert-danger w-50 mt-4 mx-auto d-block"
+        document.getElementById("serach-result").innerHTML = ""
+        document.getElementById("mobile-details").innerHTML = ""
     }
     else {
         document.getElementById("empty-search").classList = "d-none"
@@ -59,8 +61,7 @@ const displaySearchResult = mobiles => {
     })
 
     // ---- load more button
-    const loadBotton = document.getElementById("load-btn")
-    loadBotton.classList = "btn btn-primary mt-4 mx-auto d-block"
+    const loadBotton = document.getElementById("load-btn").classList = "btn btn-primary mt-4 mx-auto d-block"
     document.body.appendChild(loadBotton)
 
 }
