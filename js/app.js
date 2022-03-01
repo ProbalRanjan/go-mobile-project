@@ -104,8 +104,22 @@ const displayMobileDetails = mobile => {
                         <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Storage: </span> ${mobile.mainFeatures.storage}</p>
                         <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Chip: </span> ${mobile.mainFeatures.chipSet}</p>
                         <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Memory: </span> ${mobile.mainFeatures.memory}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Sensors: </span>${mobile.mainFeatures.sensors.join()}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Others: </span> ${mobile.others}</p>
+                        <p class="card-text pb-1"><span class="fw-bold">Sensors: </span>
+                        <p class="border-bottom border-2">${mobile.mainFeatures.sensors[0]},
+                        ${mobile.mainFeatures.sensors[1]},
+                        ${mobile.mainFeatures.sensors[2]},
+                        ${mobile.mainFeatures.sensors[3]},
+                        ${mobile.mainFeatures.sensors[4]},
+                        ${mobile.mainFeatures.sensors[5]}</p>
+                        </p>
+                        <p class="card-text pb-1"><span class="fw-bold">Others:</span>
+                        <p>WLAN: ${mobile.others?.WLAN ? mobile.others.WLAN : "No"}</p>
+                        <p>Bluetooth: ${mobile.others?.Bluetooth ? mobile.others.Bluetooth : "No"}</p>
+                        <p>GPS: ${mobile.others?.GPS ? mobile.others.GPS : "No"}</p>
+                        <p>NFC: ${mobile.others?.NFC ? mobile.others.NFC : "No"}</p>
+                        <p>Radio: ${mobile.others?.Radio ? mobile.others.Radio : "No"}</p>
+                        <p>USB: ${mobile.others?.USB ? mobile.others.USB : "No"}</p>
+                        </p>
                     </div>
                 </div>
             </div>
