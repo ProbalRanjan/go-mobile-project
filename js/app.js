@@ -8,13 +8,11 @@ const searchMobile = () => {
     // ---- clear previous search
     searchField.value = ""
 
-
     // ---- error messages
     if (searchText === "") {
         const emptySearch = document.getElementById("empty-search")
         emptySearch.classList = "alert alert-danger w-50 mt-4 mx-auto d-block"
     }
-
     else {
         document.getElementById("empty-search").classList = "d-none"
 
@@ -36,7 +34,7 @@ const displaySearchResult = mobiles => {
     searchResult.textContent = ""
 
     // ---- get each result
-    mobiles.forEach(mobile => {
+    mobiles?.slice(0, 20).forEach(mobile => {
 
         // ---- div create
         const createDiv = document.createElement('div')
@@ -47,7 +45,7 @@ const displaySearchResult = mobiles => {
             <div class="card h-100 py-2">
                 <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${mobile.phone_name}</h5>
+                    <h5 class="card-title fw-bold">${mobile.phone_name}</h5>
                     <p class="card-text">${mobile.brand}</p>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button onclick="mobileDetails('${mobile.slug}')" class="btn btn-primary" type="button">Details</button>
@@ -100,20 +98,14 @@ const displayMobileDetails = mobile => {
                 <div class="col-md-6 col-12 d-flex align-items-center">
                     <div class="card-body">
                         <h5 class="card-title pb-1 border-bottom border-2 fw-bold">${mobile.name}</h5>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Brand:</span>
-                        ${mobile.brand}</p>
-                        <p class="card-title pb-1 border-bottom border-2"><span class="fw-bold">Release
-                            Date:</span> ${mobile.releaseDate}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Display:</span>
-                        ${mobile.mainFeatures.displaySize}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Storage:</span>
-                        ${mobile.mainFeatures.storage}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Chip:</span>
-                        ${mobile.mainFeatures.chipSet}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Memory:</span>
-                        ${mobile.mainFeatures.memory}</p>
-                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Sensors:</span>
-                        ${mobile.mainFeatures.sensors.forEach(sensor => sensor[0])}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Brand: </span> ${mobile.brand}</p>
+                        <p class="card-title pb-1 border-bottom border-2"><span class="fw-bold">Release Date: </span> ${mobile.releaseDate ? mobile.releaseDate : "Coming soon."}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Display: </span> ${mobile.mainFeatures.displaySize}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Storage: </span> ${mobile.mainFeatures.storage}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Chip: </span> ${mobile.mainFeatures.chipSet}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Memory: </span> ${mobile.mainFeatures.memory}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Sensors: </span>${mobile.mainFeatures.sensors.join()}</p>
+                        <p class="card-text pb-1 border-bottom border-2"><span class="fw-bold">Others: </span> ${mobile.others}</p>
                     </div>
                 </div>
             </div>
